@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+
+
+{% block content %}
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">RUT</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Telefono</th>
+            <th scope="col">Fecha</th>
+            <th scope="col">Hora</th>
+            <th scope="col">Cantidad de Personas</th>
+            <th scope="col">Estado</th>
+            <th scope="col">Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for reserva in data %}
+        <tr>
+            <td>{{reserva.rut}}</td>
+            <td>{{reserva.nombre}}</td>
+            <td>{{reserva.telefono}}</td>
+            <td>{{reserva.fecha}}</td>
+            <td>{{reserva.hora}}</td>
+            <td>{{reserva.personas }}</td>
+            <td>{{reserva.estado.desc_estado}}</td>
+
+            <td><a class="btn btn-primary" href="/editar_reserva/{{reserva.id}}">Editar</a>
+                <a class="btn btn-danger" href="/borrar_reserva/{{reserva.id}}">Borrar</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<a href="/registrar_reserva" class="btn btn-primary">Nueva reserva</a>
+{% endblock %}
